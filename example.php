@@ -24,8 +24,15 @@ $ucwa->getApplicationLink() OR die( "Couldn't get the application link" );						
 $ucwa->registerApplication( "My first UCWA app" ) OR die( "Can't register application" );			// Register your app
 
 // Create the conversation
-// ...
+$ucwa->createConversation( "sip:someone@example.com", "Subject-Blaster" );							// Create conversation by supplying receiver and subject
 
+// Wait until the user accepts the conversation
+$ucwa->waitForAccept();
 
+// Send message
+$ucwa->sendMessage( "First message!" );																// Send the first message!
+
+// Terminate conversation
+$ucwa->terminateConversation();																		// Finally, close the conversation
 
 ?>
