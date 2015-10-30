@@ -4,14 +4,6 @@ class UCWA {
 	/*************************************************
 	//	Variables
 	*************************************************/
-
-	/*
-	 *	Conversation things
-	*/
-	private static $ucwa_conv_subject = "";
-	private static $ucwa_conv_to = "sip:";
-	private static $ucwa_conv_msg = "";
-
 	
 	/*
 	 *	Server configuration
@@ -314,9 +306,9 @@ class UCWA {
 			CURLOPT_POSTFIELDS => json_encode(array(
 					"importance" => "Normal",
 					"sessionContext" => self::_generateUUID(),
-					"subject" => self::$ucwa_conv_subject,
+					"subject" => $subject,
 					"telemetryId" => NULL,
-					"to" => self::$ucwa_conv_to,
+					"to" => $to,
 					"operationId" => self::$ucwa_operationid
 				)
 			),
@@ -414,8 +406,6 @@ class UCWA {
 	 *	Sends a message
 	*/
 	public static function sendMessage($msg) {
-		self::$ucwa_conv_msg = $msg;
-		
 		$curl = curl_init();
 		curl_setopt_array($curl, array(
 			CURLOPT_HEADER => false,
@@ -425,7 +415,7 @@ class UCWA {
 			CURLOPT_URL => self::$ucwa_baseserver . self::$ucwa_path_send,
 			CURLOPT_REFERER => self::$ucwa_baseserver . self::$ucwa_path_xframe,
 			CURLOPT_POST => true,
-			CURLOPT_POSTFIELDS => self::$ucwa_conv_msg,
+			CURLOPT_POSTFIELDS => $msg,
 			CURLOPT_HTTPHEADER => array(
 				"Authorization: Bearer " . self::$ucwa_accesstoken,
 				"Content-Type: text/plain; charset=UTF-8",
