@@ -33,7 +33,7 @@ $ucwa->getAccessToken( "user@example.com", "p@ssw0rd!" ) OR die( "Couldn't get a
 */
 // This method allows us to export important data
 // such as urls, the access token and so on...
-$ucwa->getUCWAData();
+$ucwa_data = $ucwa->getUCWAData();
 
 /*
  * Define receivers, messages & more
