@@ -75,6 +75,6 @@ $im->sendMessage( "Just a test..." ) OR die( "Couldn't send <just a test...>." )
 */
 // If you have nothing more to say, you should
 // terminate the conversation.
-$im->terminateConversation();
+$im->terminateConversation() OR die( "Couldn't terminate conversation" );
 
 ?>
