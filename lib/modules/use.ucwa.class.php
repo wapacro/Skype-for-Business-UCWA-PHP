@@ -141,7 +141,7 @@ class UCWA_use extends ucwa_base {
 	 *	(bool/null) waitForAccept($recursive = true)
 	 *	######################################
 	 *
-	 *	Wait 'till the user accepts the conversation
+	 *	Wait 'til the user accepts the conversation
 	*/
 	public static function waitForAccept($recursive = true) {
 		$curl = curl_init();
