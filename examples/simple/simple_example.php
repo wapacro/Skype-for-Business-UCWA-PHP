@@ -12,7 +12,7 @@
 /*
  * Include UCWA class
 */
-require( "lib/base.ucwa.class.php" );
+require( "../../lib/base.ucwa.class.php" );
 
 /*
  * Initialize the class
