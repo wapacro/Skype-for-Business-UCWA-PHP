@@ -34,4 +34,4 @@ This will load two classes, which you'll be able to use. On one hand `UCWA_init`
 ```
 The constructor of `UCWA_init` requires your app's [FQDN (full qualified domain name)](https://en.wikipedia.org/wiki/Fully_qualified_domain_name) as the first and last parameter. Your FQDN has to be allowed on the Skype for Business- or Lync-Server. **Please note,** that your domain with *http://* **is not** the same as with *https://*. 
 
-Thanks to the constructor, the `UCWA_init` class will automatically discover the
+Thanks to the constructor, the `UCWA_init` class will automatically discover the required url's for the user-, application- and XFrame-source. 
