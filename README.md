@@ -14,6 +14,8 @@ That's why you need this class. It allows you to send instant messages to multip
 
 ## 2 How and why
 ### 2.1 First steps
+First of all, you have to set the Autodiscover-URL for your environment. The Autodiscover-URL usually looks like *https://lyncdiscover.yourdomain.com*. Change that URL by editing your local copy of *base.ucwa.class.php*. The variable which stores this URL is located in the upper area of the file.
+
 Copy the *lib/* directory and include the *base.ucwa.class.php* file wherever you want to use the class.
 ```
 <?php
@@ -31,3 +33,5 @@ This will load two classes, which you'll be able to use. On one hand `UCWA_init`
 ?>
 ```
 The constructor of `UCWA_init` requires your app's [FQDN (full qualified domain name)](https://en.wikipedia.org/wiki/Fully_qualified_domain_name) as the first and last parameter. Your FQDN has to be allowed on the Skype for Business- or Lync-Server. **Please note,** that your domain with *http://* **is not** the same as with *https://*. 
+
+Thanks to the constructor, the `UCWA_init` class will automatically discover the
