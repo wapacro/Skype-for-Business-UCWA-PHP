@@ -30,4 +30,4 @@ This will load two classes, which you'll be able to use. On one hand `UCWA_init`
   $ucwa = new UCWA_init( "http://myapp.example.com" );
 ?>
 ```
-The constructor of `UCWA_init` requires your app's [FQDN (full qualified domain name)](https://en.wikipedia.org/wiki/Fully_qualified_domain_name) as the first and last parameter.
+The constructor of `UCWA_init` requires your app's [FQDN (full qualified domain name)](https://en.wikipedia.org/wiki/Fully_qualified_domain_name) as the first and last parameter. Your FQDN has to be allowed on the Skype for Business- or Lync-Server. **Please note,** that your domain with *http://* **is not** the same as with *https://*. 
