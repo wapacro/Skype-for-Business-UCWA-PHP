@@ -13,6 +13,9 @@ That's why you need this class. It allows you to send instant messages to multip
 ###### [Official UCWA site](https://ucwa.skype.com)
 
 ## 2 How and why
+
+![UCWA Workflow](https://raw.githubusercontent.com/wapacro/Skype-for-Business-UCWA-PHP/master/docs/img/ucwa_workflow.png)
+
 ### 2.1 First steps
 First of all, you have to set the Autodiscover-URL for your environment. The Autodiscover-URL usually looks like *https://lyncdiscover.yourdomain.com*. Change that URL by editing your local copy of *base.ucwa.class.php*. The variable which stores this URL is located in the upper area of the file.
 
