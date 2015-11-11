@@ -170,4 +170,5 @@ Only then you're allowed to use the `terminateConversation` method. It will grac
 ?>
 ```
 
+### 2.10 Request workflow
 ![UCWA Workflow](https://raw.githubusercontent.com/wapacro/Skype-for-Business-UCWA-PHP/master/docs/img/ucwa_workflow.png)
