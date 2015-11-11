@@ -1,4 +1,23 @@
 # Skype for Business UCWA PHP
+
+## Index
+#### 1. About
+###### [1.1 What is Skype for Business?](#11-What-is-Skype-for-Business)
+###### [1.2 What is *(Skype for Business)* UCWA?](#12-what-is-skype-for-business-ucwa)
+###### [1.3 And why do I need *this* class?](#13-and-why-do-i-need-this-class)
+#### 2. How and why
+###### [2.1 First steps](#21-first-steps)
+###### [2.2 Initialize `UCWA_init`](#22-initialize-ucwa_init)
+###### [2.3 Get an access token](#23-get-an-access-token)
+###### [2.4 Initialize `UCWA_use`](#24-initialize-ucwa_use)
+###### [2.5 Register application](#25-register-application)
+###### [2.6 Create conversation](#26-create-conversation)
+###### [2.7 Wait until accept](#27-wait-until-accept)
+###### [2.8 Send message](#28-send-message)
+###### [2.9 Terminate conversation](#29-terminate-conversation)
+###### [2.10 Request workflow](#210-request-workflow)
+
+
 ## 1. About
 ### 1.1 What is Skype for Business?
 Skype for Business is a business application, which allows companys to fully support UCC (Unified communication).
