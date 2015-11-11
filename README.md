@@ -47,3 +47,16 @@ Use the method `getAccessToken( $username, $password )` to do the necessary requ
 ?>
 ```
 Your username depends on the server configuration. Usually, you can either use your SIP address or your internal domain followed by your NT account *(domain\user)*. The user you use for authentication will be the visible sender for your IM receivers.
+
+### 2.4 Initialize `UCWA_use`
+Basic things like Autodiscover and authentication are done, so we going to use the advanced sh**. But first of all, we need to initialize these advanced things. For that, we use `UCWA_use`.
+```
+<?php
+  require( "lib/base.ucwa.class.php" );
+  $ucwa = new UCWA_init( "http://myapp.example.com" );
+  $ucwa->getAccessToken( "some.user@yourdomain.com", "P@ssw0rd!" );
+  
+  $im = new UCWA_use();
+?>
+```
+In this short example, the constructor of `UCWA_use` doesn't need any parameters. But if you'd like to use a multi-file solution, you have to export the Autodiscover and authentication data by using the `UCWA_init` method `getUCWAData()`, which will return an array. Then you'll have to pass the array values to the constructor of `UCWA_use`. See the advanced example for more information.
