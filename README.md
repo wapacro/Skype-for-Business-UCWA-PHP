@@ -60,3 +60,20 @@ Basic things like Autodiscover and authentication are done, so we going to use t
 ?>
 ```
 In this short example, the constructor of `UCWA_use` doesn't need any parameters. But if you'd like to use a multi-file solution, you have to export the Autodiscover and authentication data by using the `UCWA_init` method `getUCWAData()`, which will return an array. Then you'll have to pass the array values to the constructor of `UCWA_use`. See the advanced example for more information.
+
+### 2.5 Register application
+The first real step with `UCWA_use` besides the constructor is to register your application. If you want to send multiple messages **at the same time** you should register your application for each conversation. This will generate an unique ID which allows you to track the state of conversation and message.
+```
+<?php
+  require( "lib/base.ucwa.class.php" );
+  $ucwa = new UCWA_init( "http://myapp.example.com" );
+  $ucwa->getAccessToken( "some.user@yourdomain.com", "P@ssw0rd!" );
+  
+  $im = new UCWA_use();
+  $im->registerApplication( "My Application" );
+?>
+```
+You can specify whatever you want as application name (first parameter of `registerApplication()`). It won't show up in conversations or somewhere else, except for the server log.
+
+### 2.6 Create conversation
+After the registration of your application is complete, you are able to start a conversation.
