@@ -2,7 +2,7 @@
 
 ## Index
 1. About<br>
-[1.1 What is Skype for Business?](#11-What-is-Skype-for-Business)<br>
+[1.1 What is Skype for Business?](#11-what-is-Skype-for-Business)<br>
 [1.2 What is *(Skype for Business)* UCWA?](#12-what-is-skype-for-business-ucwa)<br>
 [1.3 And why do I need *this* class?](#13-and-why-do-i-need-this-class)<br>
 2. How and why<br>
