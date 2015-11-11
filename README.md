@@ -14,8 +14,6 @@ That's why you need this class. It allows you to send instant messages to multip
 
 ## 2 How and why
 
-![UCWA Workflow](https://raw.githubusercontent.com/wapacro/Skype-for-Business-UCWA-PHP/master/docs/img/ucwa_workflow.png)
-
 ### 2.1 First steps
 First of all, you have to set the Autodiscover-URL for your environment. The Autodiscover-URL usually looks like *https://lyncdiscover.yourdomain.com*. Change that URL by editing your local copy of *base.ucwa.class.php*. The variable which stores this URL is located in the upper area of the file.
 
@@ -80,3 +78,35 @@ You can specify whatever you want as application name (first parameter of `regis
 
 ### 2.6 Create conversation
 After the registration of your application is complete, you are able to start a conversation.
+```
+<?php
+  require( "lib/base.ucwa.class.php" );
+  $ucwa = new UCWA_init( "http://myapp.example.com" );
+  $ucwa->getAccessToken( "some.user@yourdomain.com", "P@ssw0rd!" );
+  
+  $im = new UCWA_use();
+  $im->registerApplication( "My Application" );
+  $im->createConversation( "sip:another.one@yourdomain.com", "Subject" );
+?>
+```
+Just pass the receiver as first argument and the subject of this conversation as the second argument.
+
+### 2.7 Wait until accept
+The method `createConversation` in `UCWA_use` will generate a conversation invitation which the receiver has to accept. If the user ignores the invitation or is offline, the following method `waitForAccept` will return false. If the receiver is available and doesn't click "*Ignore*" within 30 seconds (depends on configuration), the conversation will automatically be accepted.
+```
+<?php
+  require( "lib/base.ucwa.class.php" );
+  $ucwa = new UCWA_init( "http://myapp.example.com" );
+  $ucwa->getAccessToken( "some.user@yourdomain.com", "P@ssw0rd!" );
+  
+  $im = new UCWA_use();
+  $im->registerApplication( "My Application" );
+  $im->createConversation( "sip:another.one@yourdomain.com", "Subject" );
+  
+  if ( $im->waitForAccept() ) {
+    // ...
+  }
+?>
+```
+
+![UCWA Workflow](https://raw.githubusercontent.com/wapacro/Skype-for-Business-UCWA-PHP/master/docs/img/ucwa_workflow.png)
