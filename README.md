@@ -32,6 +32,18 @@ This will load two classes, which you'll be able to use. On one hand `UCWA_init`
   $ucwa = new UCWA_init( "http://myapp.example.com" );
 ?>
 ```
-The constructor of `UCWA_init` requires your app's [FQDN (full qualified domain name)](https://en.wikipedia.org/wiki/Fully_qualified_domain_name) as the first and last parameter. Your FQDN has to be allowed on the Skype for Business- or Lync-Server. **Please note,** that your domain with *http://* **is not** the same as with *https://*. 
+The constructor of `UCWA_init` requires your app's [FQDN (fully qualified domain name)](https://en.wikipedia.org/wiki/Fully_qualified_domain_name) as the first and last parameter. Your FQDN has to be allowed on the Skype for Business- or Lync-Server. **Please note,** that your domain with *http://* **is not** the same as with *https://*. 
 
 Thanks to the constructor, the `UCWA_init` class will automatically discover the required url's for the user-, application- and XFrame-source. 
+
+### 2.3 Get an access token
+Once the Autodiscover things are done, you have to request an access token for further use.
+Use the method `getAccessToken( $username, $password )` to do the necessary requests.
+```
+<?php
+  require( "lib/base.ucwa.class.php" );
+  $ucwa = new UCWA_init( "http://myapp.example.com" );
+  $ucwa->getAccessToken( "some.user@yourdomain.com", "P@ssw0rd!" );
+?>
+```
+Your username depends on the server configuration. Usually, you can either use your SIP address or your internal domain followed by your NT account *(domain\user)*. The user you use for authentication will be the visible sender for your IM receivers.
