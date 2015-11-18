@@ -15,7 +15,8 @@
 [2.7 Wait until accept](#27-wait-until-accept)<br>
 [2.8 Send message](#28-send-message)<br>
 [2.9 Terminate conversation](#29-terminate-conversation)<br>
-[2.10 Request workflow](#210-request-workflow)<br>
+[2.10 Delete application](#210-delete-application)<br>
+[2.11 Request workflow](#211-request-workflow)<br>
 
 <hr>
 ## 1. About
@@ -189,5 +190,28 @@ Only then you're allowed to use the `terminateConversation` method. It will grac
 ?>
 ```
 
-### 2.10 Request workflow
+### 2.10 Delete application
+To avoid `HTTP/1.1 410 Gone` you should always delete your applications at the end. Do this by using `deleteApplication`.
+```
+<?php
+  require( "lib/base.ucwa.class.php" );
+  $ucwa = new UCWA_init( "http://myapp.example.com" );
+  $ucwa->getAccessToken( "some.user@yourdomain.com", "P@ssw0rd!" );
+  
+  $im = new UCWA_use();
+  $im->registerApplication( "My Application" );
+  $im->createConversation( "sip:another.one@yourdomain.com", "Subject" );
+  
+  if ( $im->waitForAccept() ) {
+    $im->sendMessage( "First message!" );
+    // Send more messages
+    
+    $im->waitForAccept( false );
+    $im->terminateConversation();
+	$im->deleteApplication();
+  }
+?>
+```
+
+### 2.11 Request workflow
 ![UCWA Workflow](https://raw.githubusercontent.com/wapacro/Skype-for-Business-UCWA-PHP/master/docs/img/ucwa_workflow.png)
