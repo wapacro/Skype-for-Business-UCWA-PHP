@@ -71,7 +71,13 @@ if ( count( $v_skype_msgs ) < 2 ) {
 /*
  * Terminate conversation
 */
+$im->waitForAccept( false );
 $im->terminateConversation() OR die( "Couldn't terminate conversation" );
+
+/*
+ * Delete Application
+*/
+$im->deleteApplication() OR die( "Couldn't delete application" );
 
 // ##################################################################################################
 

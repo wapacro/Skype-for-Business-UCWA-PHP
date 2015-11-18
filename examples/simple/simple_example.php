@@ -74,7 +74,15 @@ $im->sendMessage( "Just a test..." ) OR die( "Couldn't send <just a test...>." )
  * Terminate conversation
 */
 // If you have nothing more to say, you should
-// terminate the conversation.
+// terminate the conversation. But first, you have to wait
+// 'til the message arrives.
+$im->waitForAccept( false );
 $im->terminateConversation() OR die( "Couldn't terminate conversation" );
 
+/*
+ * Delete Application
+*/
+// To avoid error 410 GONE (TooManyApplications) you
+// should delete your application, after everything is done.
+$im->deleteApplication() OR die( "Couldn't delete application" );
 ?>

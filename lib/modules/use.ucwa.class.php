@@ -242,6 +242,41 @@ class UCWA_use extends ucwa_base {
 	}
 	
 	/*
+	 *	(bool) deleteApplication()
+	 *	######################################
+	 *
+	 *	Deletes the current application
+	*/
+	public static function deleteApplication() {
+		$curl = curl_init();
+		curl_setopt_array($curl, array(
+			CURLOPT_HEADER => false,
+			CURLOPT_RETURNTRANSFER => true,
+			CURLOPT_SSL_VERIFYPEER => false,
+			CURLOPT_SSL_VERIFYHOST => false,
+			CURLOPT_URL => self::$ucwa_baseserver . self::$ucwa_path_application_fq,
+			CURLOPT_REFERER => self::$ucwa_baseserver . self::$ucwa_path_xframe,
+			CURLOPT_CUSTOMREQUEST => "DELETE",
+			CURLOPT_HTTPHEADER => array(
+				"Authorization: Bearer " . self::$ucwa_accesstoken,
+				"X-Ms-Origin: " . self::$ucwa_fqdn,
+			),
+			CURLOPT_TIMEOUT => 15,
+		));
+		
+		$response = curl_exec($curl);
+		$status = curl_getinfo($curl);
+		curl_close($curl);
+		
+		if ($status["http_code"] == 204) {
+			return true;
+		} else {
+			self::_error("Can't delete application for Skype UCWA", $status);	
+			return false;		
+		}
+	}
+	
+	/*
 	 *	(bool) sendMessage($msg)
 	 *	######################################
 	 *

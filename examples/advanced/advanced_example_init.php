@@ -53,7 +53,7 @@ $send[] = array(
 		"subject" => "First receiver!",
 		"msg" => array(
 			"Message 1!",
-			"Message 2 ;)"
+			"Message 2"
 		),
 	),
 );
